@@ -1,0 +1,326 @@
+$bgc: #fff;
+$mainc: #000;
+$Firstcolor: #555; 
+$secondcolor: #999;
+$red: #ef2853;
+$containerw: 87vw;
+
+@mixin  flex ($space, $align, $direction) {
+    display: flex;
+    justify-content: $space;
+    align-items: $align;
+    flex-direction: $direction;
+    
+}
+
+@mixin zero {
+    border: none;
+    outline: none
+}
+
+ 
+
+body {
+    background: $bgc;
+    font-family: Roboto,sans-serif;
+    color:$mainc;
+    position: relative;
+    height: 100vh;
+    @include flex (none, center, column);
+}
+
+a{
+    color:$mainc;
+    text-decoration: none;
+    display: block;
+}
+
+// ************HEADER*************
+.header{
+    width: 87vw;
+    height: 4em;
+    position: absolute;
+    z-index: 100;
+    background-color: $bgc;
+    @include flex (space-between, flex-end, none);
+
+    button{
+    background-color: $bgc;
+    @include zero;
+
+    }
+    div{
+        flex-grow: 5;
+    }
+    img{
+       width: 84px;
+       height: 16px;
+    }
+    
+    ul{
+        display: flex;
+
+        li, button{
+            padding: 0 1em;
+        }
+    }
+}
+
+//   **************SLIDERS**************
+.swiper-container {
+    margin-top: 3em;
+    width: $containerw;
+    height: 85vh;
+   
+  .swiper-slide {
+    text-align: center;
+    background: $bgc;
+    transition: all 1s ease;
+    @include flex (space-around, center, none);
+
+    
+    h1{
+    width: $containerw / 3.48;
+    text-align: left;  
+    font-weight: 500;
+    font-size: 4em;
+    line-height: 1em;
+    word-wrap: break-word;
+    text-align: left;
+    margin-left: -0.05em;
+    }
+
+    .swiper-slide-active {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 100
+    }
+
+  }
+
+  .swiper-slide-active .content{
+    color: $mainc;
+    }
+  .swiper-slide-next, .swiper-slide-prev {
+    transform: scale(.75);
+    opacity: .85
+    }
+
+    button{
+        color: $bgc;
+        background-color: $mainc;
+        width: 15vw;
+        height: 10vh;
+        border: none;
+        font-size: 1.2em;
+        margin: 2em 0;
+        @include flex (space-evenly, center, none);
+    }
+
+}
+
+.img{
+    width: 70vh;
+    height: 70vh;
+
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50em 40em  40em 55em;
+    }
+}
+
+.content{
+    margin-top: 2em;
+    position: relative;
+    left: -6em;
+    color: $bgc;
+    transition: 1s ease-in;
+    @include flex (none, none, column);
+
+    .parameteres{
+        margin-top: 2em;
+        width: 35vw;
+        height: 10vh;
+        display: flex;
+        flex-wrap: wrap;
+    
+    }
+
+}
+
+.parameteres div{
+    width: 100%;
+    color: $Firstcolor;
+    font-size: 500;
+    text-align: left;
+    @include flex (space-between, none, none);
+
+    span{
+        width: 5em;
+        &:first-child, &:nth-child(3){
+            width: 3em;
+        }
+    }
+}
+
+.swiper-pagination{
+    font-size: 0.8em;
+    position: absolute;
+    top: 7em;
+}
+
+// ***************LINKS***************
+.links{
+    position: absolute;
+    z-index: 1000;
+    width: $containerw + 3vw;
+    height: 5em;
+    margin-top: 45vh;
+    @include flex (space-between, none, none);
+
+    .Rec{
+        transform: rotate(-90deg);
+    }
+        
+    .related{
+        color: $bgc;
+        background-color: $red;
+        height: 2.5em;
+        width: 7em;
+        box-shadow: 0 0 5px $secondcolor;
+        transition: 0.5s ease;
+        @include flex (space-evenly, center, none);
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    .buy{
+        margin-top: 0.5em;
+        color: $red;
+        background-color: $bgc;
+        height: 2.5em;
+        width: 7em;
+        box-shadow: 0 0 5px $secondcolor;
+        transition: 0.5s ease;
+        @include flex (space-evenly, center, none);
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    .related, .buy{
+        margin-right: -5vw;
+    }
+
+}
+
+// *************FOOTER************
+footer{
+    position: absolute;
+    bottom: 2em;
+    width: $containerw;
+    height: 4em;
+    z-index: 100;
+    background-color: $bgc;
+    @include flex (space-between, flex-end, none);
+
+    button{
+    background-color: $bgc;
+    font-size: 1.2em;
+
+    @include zero;
+    }
+
+    ul{
+        width: 5vw;
+        @include flex (space-between, none, none);
+    }
+
+    div{
+        @include flex ( none, none, column);
+        input{
+            background-color: $bgc;
+            line-height: 2em;
+            border-bottom: 1px solid $mainc;
+            @include zero;
+        }
+    }
+}
+
+/* _________________ADOPTIVE________________ */
+@media (max-width: 1260px){
+
+    .swiper-container {
+       .swiper-slide {
+            @include flex (space-between, center, none);
+       }
+
+       h1{
+        width: 40vw;
+        font-size: 3em !important;
+        word-wrap: none;
+        }
+    }
+}
+@media (max-width: 960px){
+    body, p{
+        font-size: 0.8rem;
+        line-height: 1.2em;
+    }
+
+    header{
+        background-color: transparent !important;
+        ul{
+            display: none !important;
+        }
+    }
+    .swiper-slide{
+        width: 100% !important;
+    }
+    .img{
+        width:100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+    }
+    .content{
+        position: absolute !important;
+        width:100% !important;
+        margin-left: 30vw;
+        @include flex (center, center, column);
+
+        h1{
+            width: 50vw !important;
+            color: $red;
+        }
+
+        .parameteres{
+            margin-top: 2em;
+            width: 300px;
+            height: 10vh;
+            display: flex;
+            flex-wrap: wrap;
+        
+        }
+
+        button{
+            color: $bgc;
+            background-color: $mainc;
+            width: 25vw;
+            height: 8vh;
+            border: none;
+            font-size: 1.1em;
+            margin: 2em 0;
+            @include flex (space-evenly, center, none);
+        }
+
+    }
+
+    footer{
+        display: none;
+    }
+    
+}
